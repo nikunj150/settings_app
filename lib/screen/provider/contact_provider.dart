@@ -14,7 +14,6 @@ class ContactProvider  with ChangeNotifier {
   void changeTime(TimeOfDay? d2)
   {
     Time = d2;
-
     notifyListeners();
   }
 }

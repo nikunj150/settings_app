@@ -25,15 +25,15 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back,
                 color: Colors.white,
               )),
-          title: Text(
+          title: const Text(
             "Information Screen",
             style: TextStyle(color: Colors.white),
           ),
-          actions: [
+          actions: const [
             SizedBox(
               width: 10,
             ),
@@ -51,7 +51,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
               child: Column(
                 children: [
                   const SizedBox(height: 50),
-                  CircleAvatar(
+                  const CircleAvatar(
                     backgroundColor: Colors.orange,
                     radius: 80,
                     child: Text(
@@ -59,7 +59,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                       style: TextStyle(color: Colors.white, fontSize: 50),
                     ),
                   ),
-                  SizedBox(height: 40),
+                  const SizedBox(height: 40),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -122,7 +122,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 40),
+                  const SizedBox(height: 40),
                   Container(
                     height: MediaQuery.sizeOf(context).height * 0.65,
                     width: double.infinity,
@@ -141,20 +141,20 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                 "Contact info",
                                 style: TextStyle(fontSize: 19),
                               ),
-                              Spacer(),
+                              const Spacer(),
                               IconButton(
                                   onPressed: () {},
-                                  icon: Icon(Icons.star_border))
+                                  icon: const Icon(Icons.star_border))
                             ],
                           ),
                           const SizedBox(height: 40),
-                          Row(
+                          const Row(
                             children: [
-                              const Icon(Icons.phone),
-                              const SizedBox(width: 10),
+                              Icon(Icons.phone),
+                              SizedBox(width: 10),
                               Text(
                                 "91+ 38484 49494",
-                                style: const TextStyle(fontSize: 21),
+                                style: TextStyle(fontSize: 21),
                               ),
                               Spacer(),
                               Icon(Icons.videocam),
@@ -162,7 +162,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                               Icon(Icons.sms_outlined),
                             ],
                           ),
-                          SizedBox(height: 30),
+                          const SizedBox(height: 30),
                           Row(
                             children: [
                               Image.asset(
@@ -170,16 +170,16 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                 height: 25,
                                 width: 25,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
-                              Text(
+                              const Text(
                                 "Massage +91 32156 75548",
                                 style: TextStyle(fontSize: 18),
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Row(
@@ -189,16 +189,16 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                 height: 25,
                                 width: 25,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
-                              Text(
+                              const Text(
                                 "Massage +91 32156 75548",
                                 style: TextStyle(fontSize: 18),
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Row(
@@ -208,10 +208,10 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                 height: 25,
                                 width: 25,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
-                              Text(
+                              const Text(
                                 "Massage +91 32156 75548",
                                 style: TextStyle(fontSize: 18),
                               ),
@@ -220,9 +220,9 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                           const SizedBox(height: 30),
                           Row(
                             children: [
-                              Text(
+                              const Text(
                                 "davidgomez123@gmail.com",
-                                style: const TextStyle(fontSize: 20),
+                                style: TextStyle(fontSize: 20),
                               ),
                               const Spacer(),
                               IconButton(
@@ -234,9 +234,9 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                             children: [
                               Text(
                                 "Date - ${providerw!.Date!.day}/${providerw!.Date!.month}/${providerw!.Date!.year}",
-                                style: TextStyle(fontSize: 20),
+                                style: const TextStyle(fontSize: 20),
                               ),
-                              Spacer(),
+                              const Spacer(),
                               IconButton(
                                   onPressed: () async {
                                     DateTime? d1 = await showDatePicker(
@@ -247,26 +247,27 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                     );
                                     providerr!.changedate(d1!);
                                   },
-                                  icon: Icon(Icons.calendar_month)),
+                                  icon: const Icon(Icons.calendar_month)),
                             ],
                           ),
                           Row(
                             children: [
                               Text(
                                 "Time : ${providerw!.Time!.hour} : ${providerw!.Time!.minute} ",
-                                style: TextStyle(fontSize: 20),
+                                style: const TextStyle(fontSize: 20),
                               ),
-                              Spacer(),
+                              const Spacer(),
                               IconButton(
-                                  onPressed: ()  async {
-                                   TimeOfDay? d2 = await showTimePicker(
-                                        context: context,
-                                        initialTime: TimeOfDay.now(),
-                                        initialEntryMode: TimePickerEntryMode.dial,
+                                  onPressed: () async {
+                                    TimeOfDay? d2 = await showTimePicker(
+                                      context: context,
+                                      initialTime: TimeOfDay.now(),
+                                      initialEntryMode:
+                                          TimePickerEntryMode.dial,
                                     );
                                     providerr!.changeTime(d2!);
-                                    },
-                                  icon: Icon(Icons.timer)),
+                                  },
+                                  icon: const Icon(Icons.timer)),
                             ],
                           ),
                           const Spacer(),
@@ -287,7 +288,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                       color: Colors.white,
                                     )),
                               ),
-                              SizedBox(width: 20),
+                              const SizedBox(width: 20),
                               Container(
                                 height: 50,
                                 width: 50,

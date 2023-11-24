@@ -18,11 +18,11 @@ void main() {
               debugShowCheckedModeBanner: false,
               theme: ThemeData(useMaterial3: true),
               routes: {
-                '/': (context) => ContactScreen(),
-                'information': (context) => ContactInfoScreen(),
+                '/': (context) => const ContactScreen(),
+                'information': (context) => const ContactInfoScreen(),
               },
             )
-          : CupertinoApp(
+         :CupertinoApp(
               debugShowCheckedModeBanner: false,
               routes: app_routes,
             ),
