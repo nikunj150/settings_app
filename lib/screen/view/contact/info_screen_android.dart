@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:settings_app/screen/provider/contact_provider.dart';
 
 class ContactInfoScreen extends StatefulWidget {
   const ContactInfoScreen({super.key});
@@ -8,24 +10,41 @@ class ContactInfoScreen extends StatefulWidget {
 }
 
 class _ContactInfoScreenState extends State<ContactInfoScreen> {
+  ContactProvider? providerr;
+  ContactProvider? providerw;
+
   @override
   Widget build(BuildContext context) {
+    providerr = context.read<ContactProvider>();
+    providerw = context.watch<ContactProvider>();
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.green,
-          leading: IconButton(onPressed: () {
-            Navigator.pop(context);
-          }, icon: Icon(Icons.arrow_back,color: Colors.white,)),
-          title: Text("Information Screen",style: TextStyle(color: Colors.white),),
+          leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+              )),
+          title: Text(
+            "Information Screen",
+            style: TextStyle(color: Colors.white),
+          ),
           actions: [
-            Icon(Icons.edit,color: Colors.white,),
-            SizedBox(width: 10,),
-            Icon(Icons.more_vert,color: Colors.white,),
+            SizedBox(
+              width: 10,
+            ),
+            Icon(
+              Icons.more_vert,
+              color: Colors.white,
+            ),
           ],
           centerTitle: true,
         ),
-        body:  Padding(
+        body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SingleChildScrollView(
             child: Center(
@@ -35,7 +54,10 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                   CircleAvatar(
                     backgroundColor: Colors.orange,
                     radius: 80,
-                    child: Text("D",style: TextStyle(color: Colors.white,fontSize: 50),),
+                    child: Text(
+                      "D",
+                      style: TextStyle(color: Colors.white, fontSize: 50),
+                    ),
                   ),
                   SizedBox(height: 40),
                   Row(
@@ -44,7 +66,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                       Column(
                         children: [
                           InkWell(
-                            onTap: ()  {},
+                            onTap: () {},
                             child: Container(
                               height: 50,
                               width: 50,
@@ -64,7 +86,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                       Column(
                         children: [
                           InkWell(
-                            onTap: ()  {},
+                            onTap: () {},
                             child: Container(
                               height: 50,
                               width: 50,
@@ -102,7 +124,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                   ),
                   SizedBox(height: 40),
                   Container(
-                    height: MediaQuery.sizeOf(context).height * 0.54,
+                    height: MediaQuery.sizeOf(context).height * 0.65,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -135,39 +157,64 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                 style: const TextStyle(fontSize: 21),
                               ),
                               Spacer(),
-                               Icon(Icons.videocam),
-                               SizedBox(width: 20),
-                               Icon(Icons.sms_outlined),
+                              Icon(Icons.videocam),
+                              SizedBox(width: 20),
+                              Icon(Icons.sms_outlined),
                             ],
                           ),
                           SizedBox(height: 30),
                           Row(
                             children: [
-                              Image.asset("assets/images/whatsapp.png",height: 25,width: 25,),
+                              Image.asset(
+                                "assets/images/whatsapp.png",
+                                height: 25,
+                                width: 25,
+                              ),
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("Massage +91 32156 75548",style: TextStyle(fontSize: 18),),
+                              Text(
+                                "Massage +91 32156 75548",
+                                style: TextStyle(fontSize: 18),
+                              ),
                             ],
                           ),
-                          SizedBox(height: 10,),
+                          SizedBox(
+                            height: 10,
+                          ),
                           Row(
                             children: [
-                              Image.asset("assets/images/whatsapp.png",height: 25,width: 25,),
+                              Image.asset(
+                                "assets/images/whatsapp.png",
+                                height: 25,
+                                width: 25,
+                              ),
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("Massage +91 32156 75548",style: TextStyle(fontSize: 18),),
+                              Text(
+                                "Massage +91 32156 75548",
+                                style: TextStyle(fontSize: 18),
+                              ),
                             ],
                           ),
-                          SizedBox(height: 10,),
+                          SizedBox(
+                            height: 10,
+                          ),
                           Row(
                             children: [
-                              Image.asset("assets/images/whatsapp.png",height: 25,width: 25,),
+                              Image.asset(
+                                "assets/images/whatsapp.png",
+                                height: 25,
+                                width: 25,
+                              ),
                               SizedBox(
                                 width: 10,
                               ),
-                              Text("Massage +91 32156 75548",style: TextStyle(fontSize: 18),),
+                              Text(
+                                "Massage +91 32156 75548",
+                                style: TextStyle(fontSize: 18),
+                              ),
                             ],
                           ),
                           const SizedBox(height: 30),
@@ -179,9 +226,47 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                               ),
                               const Spacer(),
                               IconButton(
-                                  onPressed: ()  {
-                                  },
+                                  onPressed: () {},
                                   icon: const Icon(Icons.email_outlined)),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                "Date - ${providerw!.Date!.day}/${providerw!.Date!.month}/${providerw!.Date!.year}",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                              Spacer(),
+                              IconButton(
+                                  onPressed: () async {
+                                    DateTime? d1 = await showDatePicker(
+                                      context: context,
+                                      initialDate: providerr!.Date!,
+                                      firstDate: DateTime(2000),
+                                      lastDate: DateTime(2050),
+                                    );
+                                    providerr!.changedate(d1!);
+                                  },
+                                  icon: Icon(Icons.calendar_month)),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                "Time : ${providerw!.Time!.hour} : ${providerw!.Time!.minute} ",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                              Spacer(),
+                              IconButton(
+                                  onPressed: ()  async {
+                                   TimeOfDay? d2 = await showTimePicker(
+                                        context: context,
+                                        initialTime: TimeOfDay.now(),
+                                        initialEntryMode: TimePickerEntryMode.dial,
+                                    );
+                                    providerr!.changeTime(d2!);
+                                    },
+                                  icon: Icon(Icons.timer)),
                             ],
                           ),
                           const Spacer(),
@@ -196,10 +281,11 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                     borderRadius: BorderRadius.circular(50),
                                     color: Colors.red),
                                 child: IconButton(
-                                    onPressed: () {
-
-                                    },
-                                    icon: const Icon(Icons.delete,color: Colors.white,)),
+                                    onPressed: () {},
+                                    icon: const Icon(
+                                      Icons.delete,
+                                      color: Colors.white,
+                                    )),
                               ),
                               SizedBox(width: 20),
                               Container(
@@ -210,10 +296,12 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                                     color: Colors.green),
                                 child: IconButton(
                                     onPressed: () {
-
                                       Navigator.pop(context);
                                     },
-                                    icon: const Icon(Icons.lock,color: Colors.white,)),
+                                    icon: const Icon(
+                                      Icons.lock,
+                                      color: Colors.white,
+                                    )),
                               ),
                             ],
                           ),

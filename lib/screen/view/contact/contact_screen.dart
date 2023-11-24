@@ -32,8 +32,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     context: context,
                     builder: (context) {
                       return CupertinoActionSheet(
-                        title: Text("you want to add contact?",style: TextStyle(fontSize: 20),),
-
+                        title: Text(
+                          "you want to add contact?",
+                          style: TextStyle(fontSize: 20),
+                        ),
                         actions: [
                           CupertinoActionSheetAction(
                             onPressed: () {
@@ -46,21 +48,53 @@ class _HomeScreenState extends State<HomeScreen> {
                               onPressed: () {
                                 Navigator.pop(context);
                               },
-                              child: Text('No',style: TextStyle(color: Colors.red),),
+                              child: Text(
+                                'No',
+                                style: TextStyle(color: Colors.red),
+                              ),
                               isDefaultAction: false),
                         ],
                         cancelButton: CupertinoActionSheetAction(
                           onPressed: () {
                             Navigator.pop(context);
-                          },child: Text("cancel"),
+                          },
+                          child: Text("cancel"),
                         ),
                       );
                     },
                   );
                 }),
-            CupertinoButton(child: Icon(CupertinoIcons.calendar), onPressed: () {
-
-              },),
+            CupertinoContextMenu(
+              actions: [
+                CupertinoContextMenuAction(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  isDefaultAction: true,
+                  child: Text("Copy"),
+                ),
+                CupertinoContextMenuAction(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text("Share"),
+                ),
+                CupertinoContextMenuAction(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text("Favorite"),
+                ),
+                CupertinoContextMenuAction(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  isDestructiveAction: true,
+                  child: Text("Delete"),
+                ),
+              ],
+              child: Icon(CupertinoIcons.asterisk_circle),
+            ),
           ],
         ),
       ),
