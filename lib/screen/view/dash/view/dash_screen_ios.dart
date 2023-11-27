@@ -26,25 +26,27 @@ class _DashScreenIosState extends State<DashScreenIos> {
     providerr = context.watch<DashIosProvider>();
     return CupertinoTabView(
       builder: (context) {
-        return Column(
-          children: [
-            IndexedStack(
-              index: providerw!.stepIndex,
-              children: screens,
-            ),
-            CupertinoTabBar(
-                currentIndex: providerr!.stepIndex,
-                onTap: (value) {
-                  int i = value;
-                  providerr!.changestep(i);
-                },
-                items: [
-                  BottomNavigationBarItem(
-                      icon: Icon(CupertinoIcons.home), label: 'Home'),
-                  BottomNavigationBarItem(
-                      icon: Icon(CupertinoIcons.person), label: 'Contact')
-                ]),
-          ],
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              IndexedStack(
+                index: providerw!.stepIndex,
+                children: screens,
+              ),
+              CupertinoTabBar(
+                  currentIndex: providerr!.stepIndex,
+                  onTap: (value) {
+                    int i = value;
+                    providerr!.changestep(i);
+                  },
+                  items: [
+                    BottomNavigationBarItem(
+                        icon: Icon(CupertinoIcons.home), label: 'Home'),
+                    BottomNavigationBarItem(
+                        icon: Icon(CupertinoIcons.person), label: 'Contact')
+                  ]),
+            ],
+          ),
         );
       },
     );
