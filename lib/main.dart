@@ -17,10 +17,7 @@ void main() {
           ? MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: ThemeData(useMaterial3: true),
-              routes: {
-                '/': (context) => const ContactScreen(),
-                'information': (context) => const ContactInfoScreen(),
-              },
+              routes: screen_routes,
             )
          :CupertinoApp(
               debugShowCheckedModeBanner: false,

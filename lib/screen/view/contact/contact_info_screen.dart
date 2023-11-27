@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:settings_app/screen/provider/contact_provider.dart';
 
@@ -236,6 +237,44 @@ class _InfoScreenState extends State<InfoScreen> {
                   ),
                 ],
               ),
+              SizedBox(height: 10,),
+              Row(
+                children: [
+                  Text(
+                    "Time: ${providerw!.Time!.hour} : ${providerw!.Time!.minute}",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  Spacer(),
+                  CupertinoButton(
+                    child: Icon(CupertinoIcons.clock),
+                    onPressed: () {
+                      showCupertinoModalPopup(
+                        context: context,
+                        builder: (context) {
+                          return SizedBox(
+                            height: 100,
+                            child: CupertinoTimerPicker(
+                              mode: CupertinoTimerPickerMode.hm,
+                              backgroundColor: CupertinoColors.white,
+                              onTimerDurationChanged: (value) {
+                                List<String> l1 = value.toString().split(':');
+                                TimeOfDay? d2 = TimeOfDay(
+                                    hour: int.parse(l1[0]),
+                                    minute: int.parse(l1[1]));
+                                providerr!.changeTime(d2);
+                              },
+                              initialTimerDuration: Duration(
+                                hours: providerr!.Time!.hour,
+                                minutes: providerr!.Time!.minute,
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  )
+                ],
+              )
             ],
           ),
         ),
